@@ -1,0 +1,86 @@
+### List all establishments
+GET http://localhost:3001/api/establishments
+
+###
+
+### List establishments by category
+GET http://localhost:3001/api/establishments/Bakery
+
+###
+
+### List all bags
+GET http://localhost:3001/api/bags
+
+###
+
+### List bags by type
+GET http://localhost:3001/api/bags/surprise
+
+###
+
+### List bags by size
+
+### DA FIXARE
+GET http://localhost:3001/api/bags/small
+
+###
+
+### List all bags for a specific establishment
+GET http://localhost:3001/api/establishments/1400/bags
+
+###
+
+### Add a new establishment
+POST http://localhost:3001/api/establishments
+Content-Type: application/json
+
+{
+  "name": "Tropical Fruit",
+  "address": "Via dei Frutti 9",
+  "phoneNumber": "3456789012",
+  "category": "Fruit Store"
+}
+
+###
+
+### Add a new regular bag
+POST http://localhost:3001/api/bags
+Content-Type: application/json
+
+{
+  "type": "regular",
+  "content": "3 kiwi, 2 mele, 1 banana",
+  "price": 5.50,
+  "size": "medium",
+  "pickupTimeRange": "14:00 - 16:00",
+  "isAvailable": true,
+  "establishmentId": 1
+}
+
+###
+
+### Add a new surprise bag
+POST http://localhost:3001/api/bags
+Content-Type: application/json
+
+{
+  "type": "surprise",
+  "content": null,
+  "price": 3.99,
+  "size": "small",
+  "pickupTimeRange": "10:00 - 12:00",
+  "isAvailable": true,
+  "establishmentId": 2
+}
+
+###
+
+### Reserve a bag (mark as not available)
+PUT http://localhost:3001/api/bags/5
+Content-Type: application/json
+
+{
+  "isAvailable": false
+}
+
+###
