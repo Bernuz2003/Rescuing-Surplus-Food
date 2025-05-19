@@ -6,9 +6,7 @@ function DefaultLayout() {
   return (
     <>
       <NavHeader />
-      <Container fluid className="mt-4">
-        <Outlet />
-      </Container>
+      <Outlet />
     </>
   );
 }

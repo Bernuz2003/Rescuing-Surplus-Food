@@ -15,7 +15,7 @@ const Establishments = ({ establishments }) => (
     <Row>
       {establishments.map(est => (
         <Col md={6} key={est.id} className="mb-3">
-          <Card className="h-100 clickable-card">
+          <Card className="h-100 clickable-card card-hover">
             <Link
               to={`/establishments/${est.id}`}
               style={{ textDecoration: 'none', color: 'inherit' }}

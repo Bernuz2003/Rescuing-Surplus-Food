@@ -1,12 +1,11 @@
 /* Data Access Object (DAO) module */
-
 import dayjs from "dayjs";
 import sqlite from "sqlite3";
-import { Establishment, Bag } from "./RescuingSurplusFood/src/models/models.mjs";
+import { Establishment, Bag } from "./models.mjs";
 
 
 // open the database
-const db = new sqlite.Database("db.sqlite", (err) => {
+const db = new sqlite.Database("surplus_data.sqlite", (err) => {
     if (err) throw err;
 });
 

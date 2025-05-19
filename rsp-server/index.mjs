@@ -3,6 +3,7 @@ import express from 'express';
 import morgan from 'morgan';
 import { check, validationResult } from 'express-validator';
 import dao from './dao.mjs';
+import cors from 'cors';
 
 //init
 const app = express();
@@ -11,6 +12,14 @@ const port = 3001;
 //middleware
 app.use(express.json());
 app.use(morgan('dev'));
+
+const corsOptions = {
+    origin: 'http://localhost:5174',
+    credentials: true,
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
 
 /* ROUTES */
 

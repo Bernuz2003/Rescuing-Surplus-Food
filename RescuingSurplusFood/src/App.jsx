@@ -1,6 +1,6 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Container } from "react-bootstrap";
 import NavHeader from './components/NavHeader'
 import Establishments from './components/Establishments';
@@ -12,32 +12,29 @@ import AvailableBags from './components/AvailableBags';
 import { Bag, Establishment } from "./models/models.mjs";
 import { Routes, Route } from "react-router";
 import DefaultLayout from "./components/DefaultLayout";
-
-const fakeEstablishment1 = new Establishment(1, "Pizzeria Bella Napoli", "Via Roma 10, Napoli", "0811234567", "Pizzeria");
-const fakeEstablishment2 = new Establishment(2, "Panificio Il Fornaio", "Via Milano 25, Milano", "0287654321", "Bakery");
-
-const fakeBag1 = new Bag(1, "surprise", null, 5.99, "small", "12:00-14:00", true, 1);
-const fakeBag2 = new Bag(2, "regular", ["Pizza Margherita", "Coca Cola"], 7.99, "medium", "18:00-20:00", true, 1);
-const fakeBag3 = new Bag(3, "regular", ["Pane Integrale", "Cornetti"], 4.99, "small", "08:00-10:00", true, 2);
-const fakeBag4 = new Bag(4, "surprise", null, 6.99, "medium", "16:00-18:00", true, 2);
-const fakeBag5 = new Bag(5, "regular", ["Pizza Diavola", "Birra"], 8.99, "large", "19:00-21:00", true, 1);
-const fakeBag6 = new Bag(6, "surprise", null, 3.99, "small", "09:00-11:00", true, 2);
+import API from './API/API.mjs';
 
 function App() {
 
-    const [establishments, setEstablishments] = useState([
-        fakeEstablishment1,
-        fakeEstablishment2
-    ]);
+    const [establishments, setEstablishments] = useState([]);
 
-    const [bags, setBags] = useState([
-        fakeBag1,
-        fakeBag2,
-        fakeBag3,
-        fakeBag4,
-        fakeBag5,
-        fakeBag6
-    ]);
+    const [bags, setBags] = useState([]);
+
+    useEffect(() => {
+        const getEstablishments = async () => {
+            const establishments = await API.getEstablishments();
+            setEstablishments(establishments);
+        }
+        getEstablishments();
+    }, []);
+
+    useEffect(() => {
+        const getBags = async () => {
+            const bags = await API.getBags();
+            setBags(bags);
+        }
+        getBags();
+    }, []);
 
     const addBag = (bag) => { 
         setBags(oldBags => {

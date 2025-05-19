@@ -1,0 +1,23 @@
+.hero-container {
+  align-items: center;
+  justify-content: center;
+  display: flex;           
+  text-align: center;      
+  color: #fff; 
+  position: relative;
+  min-height: 45vh;
+  background-image: url('/../assets/sfondo.png');
+  background-size: cover;
+  /*background-position: center;*/
+  color: #fff;
+}
+
+.card-hover:hover {
+  box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.25);
+  transform: translateY(-4px) scale(1.02);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card-text {
+  margin-bottom: 0.2rem;
+}
